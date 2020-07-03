@@ -1,0 +1,27 @@
+{
+    "policy": {
+        "policy_id": "Delete_Index",
+        "description": "Delete Index",
+        "default_state": "Ingest",
+        "states": [
+            {
+                "name": "Ingest",
+                "actions": [],
+                "transitions": [
+                    {
+                        "state_name": "Delete"
+                    }
+                ]
+            },
+            {
+                "name": "Delete",
+                "actions": [
+                    {
+                        "delete": {}
+                    }
+                ],
+                "transitions": []
+            }
+        ]
+    }
+}
