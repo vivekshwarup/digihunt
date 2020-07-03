@@ -1,0 +1,32 @@
+## Index Management policy to close older index to reduce workload and disk space.  
+{
+    "policy": {
+        "policy_id": "index_close",
+        "description": "Closing old index",
+        "schema_version": 1,
+        "default_state": "Ingest",
+        "states": [
+            {
+                "name": "Ingest",
+                "actions": [],
+                "transitions": [
+                    {
+                        "state_name": "Close",
+                        "conditions": {
+                            "min_index_age": "10d" // modify as per Company data retentaion policy 
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Close",
+                "actions": [
+                    {
+                        "close": {}
+                    }
+                ],
+                "transitions": []
+            }
+        ]
+    }
+}
