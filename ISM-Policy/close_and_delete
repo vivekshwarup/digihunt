@@ -1,0 +1,39 @@
+{
+    "policy": {
+        "policy_id": "close_and_delete",
+        "description": "Close and Delete Indexs",
+        "default_state": "Ingest",
+        "states": [
+            {
+                "name": "Ingest",
+                "actions": [],
+                "transitions": [
+                    {
+                        "state_name": "Close",
+                        "conditions": {
+                            "min_index_age": "2d"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Close",
+                "actions": [
+                    {
+                        "close": {}
+                    }
+                ],
+                "transitions": []
+            },
+            {
+                "name": "Delete",
+                "actions": [
+                    {
+                        "delete": {}
+                    }
+                ],
+                "transitions": []
+            }
+        ]
+    }
+}
