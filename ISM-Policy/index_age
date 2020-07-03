@@ -1,0 +1,30 @@
+{
+    "policy": {
+        "policy_id": "Index Ages",
+        "description": "Index delete workflow",
+        "default_state": "Ingest",
+        "states": [
+            {
+                "name": "Ingest",
+                "actions": [],
+                "transitions": [
+                    {
+                        "state_name": "Delete",
+                        "conditions": {
+                            "min_index_age": "30d" 
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Delete",
+                "actions": [
+                    {
+                        "delete": {}
+                    }
+                ],
+                "transitions": []
+            }
+        ]
+    }
+}
